@@ -765,12 +765,7 @@ const slides = [
 
 const USKOPitchDeck = () => {
   const handleSlideChange = (oldIndex, newIndex) => {
-    track('slide_change', {
-      from: oldIndex,
-      to: newIndex,
-      slideTitle: `Slide ${newIndex + 1}`
-    });
-    console.log('Slide change tracked:', { from: oldIndex, to: newIndex });
+    console.log('Slide changed:', { from: oldIndex, to: newIndex });
   };
 
   const settings = {
