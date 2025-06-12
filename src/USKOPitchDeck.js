@@ -183,7 +183,7 @@ const slides = [
   <section className="flex flex-col justify-center items-center px-3 py-4 md:p-8 bg-white min-h-screen">
     <div className="max-w-6xl mx-auto w-full">
       <div className="bg-[#ce1126]/10 p-3 md:p-4 rounded-lg border border-[#ce1126]/30 mb-4 md:mb-6 text-center">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-[#ce1126] mb-2 text-center tracking-tight">Our <span className="text-black">Transportation Assets</span></h1>
+        <h1 className="text-3xl md:text-5xl font-extrabold text-[#ce1126] mb-2 text-center tracking-tight">Our <span className="text-black">Transportation Fleet</span></h1>
         <h2 className="text-lg md:text-2xl text-gray-700 text-center max-w-3xl mx-auto font-semibold">Comprehensive Fleet Solutions for Every Need</h2>
       </div>
       
