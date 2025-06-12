@@ -3,23 +3,14 @@
   "name": "USKO-Ryder Supply Chain Solutions Pitch Deck",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "https://i.imgur.com/J2ME1ji.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#eb0028",
+  "theme_color": "#ce1126",
   "background_color": "#ffffff"
 } 
