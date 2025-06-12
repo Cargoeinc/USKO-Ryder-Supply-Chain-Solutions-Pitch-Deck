@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { Analytics } from '@vercel/analytics/react';
+import { inject } from '@vercel/analytics';
 
-console.log('Attempting to load Vercel Analytics...');
+// Initialize analytics
+inject();
+
+console.log('Vercel Analytics initialized');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +16,6 @@ root.render(
     <App />
     <Analytics 
       debug={true}
-      mode={'production'}
       beforeSend={(event) => {
         console.log('Analytics Event:', event);
         return event;

@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ClientBadge from './components/ClientBadge';
+import { track } from '@vercel/analytics';
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -762,54 +763,66 @@ const slides = [
   </section>,
 ];
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 800,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: true,
-  adaptiveHeight: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-  autoplay: false,
-  pauseOnHover: true,
-  cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
-  dotsClass: "slick-dots custom-dots",
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        dots: true,
-        adaptiveHeight: true,
-        swipe: true,
-        touchMove: true,
-        speed: 600
-      }
-    }
-  ],
-  lazyLoad: true,
-  fade: false,
-  swipe: true,
-  touchMove: true
-};
+const USKOPitchDeck = () => {
+  const handleSlideChange = (oldIndex, newIndex) => {
+    track('slide_change', {
+      from: oldIndex,
+      to: newIndex,
+      slideTitle: `Slide ${newIndex + 1}`
+    });
+    console.log('Slide change tracked:', { from: oldIndex, to: newIndex });
+  };
 
-const USKOPitchDeck = () => (
-  <div className="bg-white w-full min-h-screen">
-    <Slider {...settings}>
-      {slides.map((slide, idx) => (
-        <div key={idx} className="relative min-h-screen">
-          {slide}
-          <div className="page-indicator absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded-full text-sm">
-            <span className="text-[#ce1126] font-bold">{idx + 1}</span>
-            <span className="mx-1 text-gray-400">/</span>
-            <span className="text-gray-500">{slides.length}</span>
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    adaptiveHeight: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    autoplay: false,
+    pauseOnHover: true,
+    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)",
+    dotsClass: "slick-dots custom-dots",
+    beforeChange: handleSlideChange,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: true,
+          adaptiveHeight: true,
+          swipe: true,
+          touchMove: true,
+          speed: 600
+        }
+      }
+    ],
+    lazyLoad: true,
+    fade: false,
+    swipe: true,
+    touchMove: true
+  };
+
+  return (
+    <div className="bg-white w-full min-h-screen">
+      <Slider {...settings}>
+        {slides.map((slide, idx) => (
+          <div key={idx} className="relative min-h-screen">
+            {slide}
+            <div className="page-indicator absolute bottom-2 right-2 bg-white/80 px-2 py-1 rounded-full text-sm">
+              <span className="text-[#ce1126] font-bold">{idx + 1}</span>
+              <span className="mx-1 text-gray-400">/</span>
+              <span className="text-gray-500">{slides.length}</span>
+            </div>
           </div>
-        </div>
-      ))}
-    </Slider>
-  </div>
-);
+        ))}
+      </Slider>
+    </div>
+  );
+};
 
 export default USKOPitchDeck; 
